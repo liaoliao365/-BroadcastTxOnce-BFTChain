@@ -32,7 +32,7 @@ const (
 // config/toml.go
 // NOTE: libs/cli must know to look in the config dir!
 var (
-	DefaultTendermintDir = ".tendermint"
+	DefaultTendermintDir = ".tendermint_src"
 	defaultConfigDir     = "config"
 	defaultDataDir       = "data"
 
