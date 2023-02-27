@@ -1,7 +1,7 @@
 PACKAGES=$(shell go list ./...)
-OUTPUT?=build/tendermint
+OUTPUT?=build_my/tendermint_my
 
-BUILD_TAGS?=tendermint
+BUILD_TAGS?=tendermint_my
 
 # If building a release, please checkout the version tag to get the correct version setting
 ifneq ($(shell git symbolic-ref -q --short HEAD),)
