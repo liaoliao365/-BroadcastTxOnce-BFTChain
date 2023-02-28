@@ -179,6 +179,10 @@ func (memR *Reactor) Receive(chID byte, src p2p.Peer, msgBytes []byte) {
 	if src != nil {
 		txInfo.SenderP2PID = src.ID()
 	}
+
+	memR.Logger.Info("lele without check")
+	fmt.Printf("??????????????????????")
+	fmt.Println()
 	// for _, tx := range msg.Txs {
 	// 	err = memR.mempool.CheckTx(tx, nil, txInfo)
 	// 	if err == ErrTxInCache {
