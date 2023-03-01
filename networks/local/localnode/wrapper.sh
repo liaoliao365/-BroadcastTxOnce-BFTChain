@@ -3,6 +3,8 @@
 ##
 ## Input parameters
 ##
+
+BINARY=tendermint_src
 BINARY=/tendermint/${BINARY:-tendermint}
 ID=${ID:-0}
 LOG=${LOG:-tendermint.log}
