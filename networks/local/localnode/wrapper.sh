@@ -5,13 +5,13 @@
 ##
 
 # docker run -v /home/lele/go/src/github.com/tendermint/build_my:/tendermint_my_build
-# BINARY=tendermint_my
+BINARY=tendermint_my
 # echo ${BINARY}
 
-BINARY=/tendermint_my_build/${BINARY:-tendermint}
+BINARY=/tendermint/${BINARY:-tendermint}
 echo ${BINARY}
 ID=${ID:-0}
-LOG=${LOG:-tendermint_my.log}
+LOG=${LOG:-tendermint.log}
 
 ##
 ## Assert linux binary
@@ -31,7 +31,7 @@ fi
 ##
 ## Run binary with all parameters
 ##
-export TMHOME="/tendermint_my_data/node${ID}"
+export TMHOME="/tendermint/node${ID}"
 
 if [ -d "`dirname ${TMHOME}/${LOG}`" ]; then
     "$BINARY" "$@" | tee "${TMHOME}/${LOG}"
@@ -39,5 +39,5 @@ else
     "$BINARY" "$@"
 fi
 
-chmod 777 -R /tendermint_my_data
+chmod 777 -R /tendermint
 

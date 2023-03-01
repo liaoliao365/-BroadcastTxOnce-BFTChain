@@ -236,8 +236,8 @@ build_c-amazonlinux:
 
 # Run a 4-node testnet locally
 localnet-start: localnet-stop build-docker-localnode
-	@if ! [ -f build/node0/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build:/tendermint:Z tendermint/localnode testnet --config /etc/tendermint/config-template.toml --o . --starting-ip-address 192.167.10.2; fi
-	docker-compose up
+	@if ! [ -f build_my/node0/config/genesis.json ]; then docker run --rm -v $(CURDIR)/build_my:/tendermint:Z tendermint/localnode_my testnet --config /etc/tendermint/config-template.toml --o . --starting-ip-address 192.167.10.6; fi
+	docker-compose -f ./docker-compose-my.yml up
 .PHONY: localnet-start
 
 # Stop testnet

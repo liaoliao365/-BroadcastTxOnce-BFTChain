@@ -1,7 +1,8 @@
 # Makefile for the "localnode" docker image.
 
 all:
-	docker build --tag tendermint/localnode localnode
+	echo "???"
+	docker build --tag tendermint/localnode_my localnode
 
 .PHONY: all
 
