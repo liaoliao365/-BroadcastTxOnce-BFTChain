@@ -242,7 +242,7 @@ localnet-start: localnet-stop build-docker-localnode
 
 # Stop testnet
 localnet-stop:
-	docker-compose down
+	docker-compose -f docker-compose-src.yml down
 .PHONY: localnet-stop
 
 # Build hooks for dredd, to skip or add information on some steps
