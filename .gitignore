@@ -7,6 +7,7 @@ build/*
 build_src/*
 build_my/*
 bak/*
+send_repeat_txs.sh
 rpc/test/.tendermint
 .tendermint
 remote_dump
