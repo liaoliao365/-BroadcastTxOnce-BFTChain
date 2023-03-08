@@ -242,7 +242,7 @@ localnet-start: localnet-stop build-docker-localnode
 
 # Stop testnet
 localnet-stop:
-	docker-compose down
+	docker-compose -f ./docker-compose-my.yml down 
 .PHONY: localnet-stop
 
 localnet-clean:
