@@ -238,14 +238,16 @@ func (mem *CListMempool) CheckTx(tx types.Tx, cb func(*abci.Response), txInfo Tx
 
 	txSize := len(tx)
 
+	//检查mempool是否满了（交易数）
 	if err := mem.isFull(txSize); err != nil {
 		return err
 	}
-
+	//检查交易是否太大
 	if txSize > mem.config.MaxTxBytes {
 		return ErrTxTooLarge{mem.config.MaxTxBytes, txSize}
 	}
 
+	//预检查函数，当前未定义
 	if mem.preCheck != nil {
 		if err := mem.preCheck(tx); err != nil {
 			return ErrPreCheck{err}
@@ -256,6 +258,7 @@ func (mem *CListMempool) CheckTx(tx types.Tx, cb func(*abci.Response), txInfo Tx
 	// to the cache. otherwise, if either of them fails, next time CheckTx is
 	// called with tx, ErrTxInCache will be returned without tx being checked at
 	// all even once.
+	// 写WAL日志
 	if mem.wal != nil {
 		// TODO: Notify administrators when WAL fails
 		_, err := mem.wal.Write(append([]byte(tx), newline...))
@@ -269,7 +272,7 @@ func (mem *CListMempool) CheckTx(tx types.Tx, cb func(*abci.Response), txInfo Tx
 		return err
 	}
 
-	if !mem.cache.Push(tx) {
+	if !mem.cache.Push(tx) {//将交易加入cache,如果不存在返回true,存在返回false
 		// Record a new sender for a tx we've already seen.
 		// Note it's possible a tx is still in the cache but no longer in the mempool
 		// (eg. after committing a block, txs are removed from mempool but not cache),

@@ -53,8 +53,10 @@ func BroadcastTxSync(ctx *rpctypes.Context, tx types.Tx) (*ctypes.ResultBroadcas
 // BroadcastTxCommit returns with the responses from CheckTx and DeliverTx.
 // More: https://docs.tendermint.com/master/rpc/#/Tx/broadcast_tx_commit
 func BroadcastTxCommit(ctx *rpctypes.Context, tx types.Tx) (*ctypes.ResultBroadcastTxCommit, error) {
+	// 获取客户端的IP地址
 	subscriber := ctx.RemoteAddr()
 
+	// 检验 本节点的客户端数量 和 单个客户端的订阅数量 是否超过上限
 	if env.EventBus.NumClients() >= env.Config.MaxSubscriptionClients {
 		return nil, fmt.Errorf("max_subscription_clients %d reached", env.Config.MaxSubscriptionClients)
 	} else if env.EventBus.NumClientSubscriptions(subscriber) >= env.Config.MaxSubscriptionsPerClient {
@@ -82,8 +84,10 @@ func BroadcastTxCommit(ctx *rpctypes.Context, tx types.Tx) (*ctypes.ResultBroadc
 	err = env.Mempool.CheckTx(tx, func(res *abci.Response) {
 		checkTxResCh <- res
 	}, mempl.TxInfo{})
+	//err = nil
 	if err != nil {
 		env.Logger.Error("Error on broadcastTxCommit", "err", err)
+		//env.Logger.Error("[lele] error on broadcastTxCommit")
 		return nil, fmt.Errorf("error on broadcastTxCommit: %v", err)
 	}
 	checkTxResMsg := <-checkTxResCh

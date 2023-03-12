@@ -248,7 +248,6 @@ localnet-stop:
 localnet-clean:
 	rm -rf ./build_my/node*
 .PHONY: localnet-clean
-
 # Build hooks for dredd, to skip or add information on some steps
 build-contract-tests-hooks:
 ifeq ($(OS),Windows_NT)
