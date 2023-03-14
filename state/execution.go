@@ -256,6 +256,8 @@ func (blockExec *BlockExecutor) Commit(
 
 // Executes block's transactions on proxyAppConn.
 // Returns a list of transaction results and updates to the validator set
+// 在应用中执行区块中的交易
+// 返回交易执行的结果和validator的更新结果
 func execBlockOnProxyApp(
 	logger log.Logger,
 	proxyAppConn proxy.AppConnConsensus,
@@ -271,6 +273,7 @@ func execBlockOnProxyApp(
 	abciResponses.DeliverTxs = dtxs
 
 	// Execute transactions and get hash.
+	// 统计有效交易个数和执行结果的回调函数
 	proxyCb := func(req *abci.Request, res *abci.Response) {
 		if r, ok := res.Value.(*abci.Response_DeliverTx); ok {
 			// TODO: make use of res.Log

@@ -46,7 +46,7 @@ type WriteCloser interface {
 }
 
 type Reader interface {
-	ReadMsg(msg proto.Message) (int, error)
+	 ReadMsg(msg proto.Message) (int, error)
 }
 
 type ReadCloser interface {
