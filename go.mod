@@ -18,6 +18,7 @@ require (
 	github.com/google/orderedcode v0.0.1
 	github.com/gorilla/websocket v1.4.2
 	github.com/gtank/merlin v0.1.1
+	github.com/jmhodges/levigo v1.0.0 // indirect
 	github.com/libp2p/go-buffer-pool v0.0.2
 	github.com/minio/highwayhash v1.0.1
 	github.com/pkg/errors v0.9.1

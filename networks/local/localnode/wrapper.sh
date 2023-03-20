@@ -16,7 +16,9 @@ LOG=${LOG:-tendermint.log}
 ##
 ## Assert linux binary
 ##
+echo "111"
 echo ${BINARY}
+echo "222"
 if ! [ -f "${BINARY}" ]; then
     echo "${BINARY}"
     echo "The binary $(basename "${BINARY}") cannot be found. Please add the binary to the shared folder. Please use the BINARY environment variable if the name of the binary is not 'tendermint' E.g.: -e BINARY=tendermint_my_test_version"
@@ -33,9 +35,13 @@ fi
 ##
 export TMHOME="/tendermint/node${ID}"
 
+echo "hahahahahaa"
+ls
 if [ -d "`dirname ${TMHOME}/${LOG}`" ]; then
+    echo "hahahahahaa111"
     "$BINARY" "$@" | tee "${TMHOME}/${LOG}"
 else
+    echo "hahahahahaa2222"
     "$BINARY" "$@"
 fi
 
