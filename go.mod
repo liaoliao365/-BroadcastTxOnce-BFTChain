@@ -10,7 +10,9 @@ require (
 	github.com/btcsuite/btcutil v1.0.2
 	github.com/confio/ics23/go v0.6.3
 	github.com/cosmos/iavl v0.15.3
+	github.com/felixge/fgprof v0.9.3 // indirect
 	github.com/fortytw2/leaktest v1.3.0
+	github.com/fsnotify/fsnotify v1.4.9 // indirect
 	github.com/go-kit/kit v0.10.0
 	github.com/go-logfmt/logfmt v0.5.0
 	github.com/gogo/protobuf v1.3.2
@@ -28,7 +30,7 @@ require (
 	github.com/snikch/goodman v0.0.0-20171125024755-10e37e294daa
 	github.com/spf13/cobra v1.1.1
 	github.com/spf13/viper v1.7.1
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.8.0
 	github.com/tendermint/tm-db v0.6.4
 	golang.org/dl v0.0.0-20230214175844-8bf023508cad // indirect
 	golang.org/x/crypto v0.0.0-20201117144127-c1f2f97bffc9
